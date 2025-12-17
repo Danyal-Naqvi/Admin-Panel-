@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  backend:
+    image: danyalali123/backend-app:latest
+    container_name: backend-app
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb+srv://marsad04:RLQUelYFGsJm7EO2@cluster0.tvqvj1l.mongodb.net/%3Cdbname%3E?retryWrites=true&w=majority
+      - PORT=4000
+      - BASE_URL=http://localhost:4000
+      - CLOUDINARY_CLOUD_NAME=dqr5w3iz1
+      - CLOUDINARY_API_KEY=977127631351131
+      - CLOUDINARY_API_SECRET=Wt8qxIFhQ7nUcSyQPdP8e-KYVcU
+    networks:
+      - lawyerhub-network
+
+  frontend:
+    image: danyalali123/frontend-app:latest
+    container_name: frontend-app
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_BASE=http://localhost:4000
+    depends_on:
+      - backend
+    networks:
+      - lawyerhub-network
+
+networks:
+  lawyerhub-network:
+    driver: bridge

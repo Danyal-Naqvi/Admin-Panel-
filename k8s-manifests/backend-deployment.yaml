@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: danyalali123/backend-app:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: MONGO_URI
+              value: mongodb+srv://marsad04:RLQUelYFGsJm7EO2@cluster0.tvqvj1l.mongodb.net/%3Cdbname%3E?retryWrites=true&w=majority
+            - name: PORT
+              value: "4000"
+            - name: BASE_URL
+              value: "http://13.92.68.107:4000"
+            - name: CLOUDINARY_CLOUD_NAME
+              value: "dqr5w3iz1"
+            - name: CLOUDINARY_API_KEY
+              value: "977127631351131"
+            - name: CLOUDINARY_API_SECRET
+              value: "Wt8qxIFhQ7nUcSyQPdP8e-KYVcU"

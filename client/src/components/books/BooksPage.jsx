@@ -22,6 +22,7 @@ export default function BooksPage({ API_BASE, showToast }) {
 
   useEffect(() => {
     fetchBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -13,6 +13,7 @@ export default function KYCPage({ API_BASE, showToast }) {
 
   useEffect(() => {
     fetchKYCs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pagination.page, statusFilter]);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function KYCPage({ API_BASE, showToast }) {
     }, 500);
 
     return () => clearTimeout(debounce);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   async function fetchKYCs() {

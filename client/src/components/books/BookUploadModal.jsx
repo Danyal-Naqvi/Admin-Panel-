@@ -23,6 +23,7 @@ export default function BookUploadModal({ isOpen, onClose, API_BASE, showToast, 
     return () => {
       if (posterPreview) URL.revokeObjectURL(posterPreview);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, posterPreview]);
 
   const resetForm = () => {

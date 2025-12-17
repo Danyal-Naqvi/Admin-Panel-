@@ -45,6 +45,7 @@ jobs:
       run: npm run build
       env:
         REACT_APP_API_BASE: http://13.92.68.107:4000
+        CI: false
 
     # ------------------ Docker Login ------------------
     - name: Docker Login

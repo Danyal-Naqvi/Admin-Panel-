@@ -77,6 +77,11 @@ jobs:
         echo "✅ Frontend image pushed to Docker Hub"
 
     # ------------------ Deploy to Azure Kubernetes (AKS) ------------------
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
       with:
@@ -85,7 +90,6 @@ jobs:
     - name: Configure AKS Credentials
       uses: azure/aks-set-context@v3
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
         cluster-name: DevOpsAKSCluster
         resource-group: DevOpsExamRG
 
